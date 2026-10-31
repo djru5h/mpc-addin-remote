@@ -1,5 +1,7 @@
 # mpc-addin-remote
 
+**On an Akai MPC XL (Gen 2)?** See [mpc-xl](mpc-xl/README.md) for its settings, scripts and a test build. Everything below is the addin itself, from the projects this is forked from.
+
 The screen and touchscreen of an Akai MPC OS standalone device (MPC Live/One/X/Key, Force) in a web browser: watch
 the screen live and drive it with a mouse or a finger. It's an **addin**: a small shared library that MPC loads at
 start through `LD_PRELOAD`, running inside the MPC process. Nothing else is installed and no system binary is
