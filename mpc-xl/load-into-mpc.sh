@@ -15,11 +15,15 @@ fi
 [ -f "$SO" ] || { echo "no $SO"; exit 1; }
 [ -f "$D/mpc_remote_addin.conf" ] || { echo "no settings file in $D"; exit 1; }
 
+[ -f "$D/launch-with-remote.sh" ] || { echo "no $D/launch-with-remote.sh"; exit 1; }
+
 sh "$D/stop.sh"
 mkdir -p "$U"
+# MPC starts through launch-with-remote.sh, which adds the addin to Hakai's launcher (Hakai replaces LD_PRELOAD)
 cat > "$DROP" <<EOF
 [Service]
-Environment=LD_PRELOAD=$SO
+ExecStart=
+ExecStart=/bin/sh $D/launch-with-remote.sh
 EOF
 systemctl daemon-reload
 echo "restarting MPC"
